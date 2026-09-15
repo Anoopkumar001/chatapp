@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Frontend build
+frontend/dist/
+
+# Environment files
+.env
+frontend/.env
+backend/.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+*.tmp
