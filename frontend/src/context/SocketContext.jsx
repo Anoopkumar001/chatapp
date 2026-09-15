@@ -6,8 +6,6 @@ const SocketContext = createContext();
 
 export const useSocket = () => useContext(SocketContext);
 
-// In production, set VITE_SOCKET_URL to your deployed backend URL
-// e.g. https://your-backend.onrender.com (no /api suffix here)
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "http://localhost:5000";
 
 export const SocketProvider = ({ children }) => {
@@ -30,7 +28,12 @@ export const SocketProvider = ({ children }) => {
     });
     socketRef.current = socket;
 
+    socket.on("connect", () => {
+      console.log("🟢 socket connected:", socket.id); // temporary debug line
+    });
+
     socket.on("getOnlineUsers", (userIds) => {
+      console.log("📡 getOnlineUsers received:", userIds); // temporary debug line
       setOnlineUsers(userIds);
     });
 
